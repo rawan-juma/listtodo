@@ -2,20 +2,22 @@ import 'DB_helper.dart';
 
 class Task {
   int id;
-  String taskName;
+  String taskTitle;
   bool isComplete;
-  Task(this.taskName, this.isComplete, [this.id]);
+  Task(this.taskTitle, this.isComplete, [this.id]);
   Task.fromJson(Map map) {
-    this.id = map[DBHelper.taskIdColumnName];
-    this.taskName = map[DBHelper.taskNameColumnName];
-    this.isComplete =
-        map[DBHelper.taskIsCompleteColumnName] == 1 ? true : false;
+    this.id = map[DBHelper.taskIdColumn];
+    this.taskTitle = map[DBHelper.taskTitleColumn];
+    //
+    //
+    this.isComplete = map[DBHelper.taskIsCompleteColumn] == 1 ? true : false;
   }
+
   toJson() {
     return {
-      DBHelper.taskIdColumnName: this.id,
-      DBHelper.taskNameColumnName: this.taskName,
-      DBHelper.taskIsCompleteColumnName: this.isComplete ? 1 : 0,
+      DBHelper.taskIdColumn: this.id,
+      DBHelper.taskTitleColumn: this.taskTitle,
+      DBHelper.taskIsCompleteColumn: this.isComplete ? 1 : 0,
     };
   }
 }

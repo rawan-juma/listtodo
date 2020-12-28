@@ -3,17 +3,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'DB_helper.dart';
 
-class TaskWidget extends StatefulWidget {
+class deleteWidget extends StatefulWidget {
   Task task;
   Function function;
   Function function1;
-  TaskWidget(this.task, [this.function1, this.function]);
+  deleteWidget(this.task, [this.function1, this.function]);
 
   @override
-  _TaskWidgetState createState() => _TaskWidgetState();
+  _deleteWidgetState createState() => _deleteWidgetState();
 }
 
-class _TaskWidgetState extends State<TaskWidget> {
+class _deleteWidgetState extends State<deleteWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -32,8 +32,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                       builder: (BuildContext context) {
                         return AlertDialog(
                             title: Text("Alert"),
-                            content:
-                                Text(" You Will Delete A task, are you sure?"),
+                            content: Text(" ?"),
                             actions: <Widget>[
                               FlatButton(
                                   child: Text("Ok"),
@@ -49,12 +48,12 @@ class _TaskWidgetState extends State<TaskWidget> {
                             ]);
                       });
                 }),
-            Text(widget.task.taskName),
+            Text(widget.task.taskTitle),
             Checkbox(
                 value: widget.task.isComplete,
                 onChanged: (value) {
                   DBHelper.dbHelper.updateTask(Task(
-                      widget.task.taskName,
+                      widget.task.taskTitle,
                       this.widget.task.isComplete =
                           !this.widget.task.isComplete,
                       widget.task.id));

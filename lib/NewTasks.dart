@@ -10,7 +10,7 @@ class NewTasks extends StatefulWidget {
 class _NewTasksState extends State<NewTasks> {
   int id;
   bool isComplete = false;
-  String taskName;
+  String taskTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,10 @@ class _NewTasksState extends State<NewTasks> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20))),
               onChanged: (value) {
-                this.taskName = value;
+                this.taskTitle = value;
               },
             ),
+            //
             Checkbox(
               value: isComplete,
               onChanged: (value) {
@@ -42,7 +43,7 @@ class _NewTasksState extends State<NewTasks> {
                 child: Text('Add New Task'),
                 onPressed: () {
                   DBHelper.dbHelper.insertNewTask(
-                      Task(this.taskName, this.isComplete, this.id));
+                      Task(this.taskTitle, this.isComplete, this.id));
                   Navigator.pop(context);
                 })
           ],

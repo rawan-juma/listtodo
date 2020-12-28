@@ -1,4 +1,4 @@
-import 'package:assignmettodo/task_Widget.dart';
+import 'package:assignmettodo/delete_Widget.dart';
 import 'package:assignmettodo/task_model.dart';
 import 'package:flutter/material.dart';
 import 'NewTasks.dart';
@@ -35,6 +35,9 @@ class _TabBarPageState extends State<TabBarPage>
     tabController = TabController(length: 3, vsync: this);
   }
 
+//
+//
+//
   int index = 0;
 
   @override
@@ -84,6 +87,7 @@ class _TabBarPageState extends State<TabBarPage>
   }
 }
 
+//
 class AllTasks extends StatefulWidget {
   List<Task> tasks;
   AllTasks(this.tasks);
@@ -101,7 +105,7 @@ class _AllTasksState extends State<AllTasks> {
   Widget getTaskWidgets(List<Task> data) {
     List<Widget> list = new List<Widget>();
     for (var i = 0; i < data.length; i++) {
-      list.add(TaskWidget(data[i], deleteFun));
+      list.add(deleteWidget(data[i], deleteFun));
     }
     return new Column(children: list);
   }
@@ -149,7 +153,7 @@ class _CompleteTasksState extends State<CompleteTasks> {
   Widget getTaskWidgets(List<Task> data) {
     List<Widget> list = new List<Widget>();
     for (var i = 0; i < data.length; i++) {
-      list.add(TaskWidget(data[i], deleteFun, myFun));
+      list.add(deleteWidget(data[i], deleteFun, myFun));
     }
     return new Column(children: list);
   }
@@ -196,7 +200,7 @@ class _IncompleteTasksState extends State<IncompleteTasks> {
   Widget getTaskWidgets(List<Task> data) {
     List<Widget> list = new List<Widget>();
     for (var i = 0; i < data.length; i++) {
-      list.add(TaskWidget(data[i], deleteFun, myFun));
+      list.add(deleteWidget(data[i], deleteFun, myFun));
     }
     return new Column(children: list);
   }
